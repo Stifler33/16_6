@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 int main() {
     vector<int> sequence;
     int counter;
@@ -12,6 +13,18 @@ int main() {
        cin >> number;
        sequence.push_back(number);
     }
-    
+    cout << "Enter number delete :";
+    int numberDel;
+    cin >> numberDel;
+    for (auto iter = sequence.begin(); iter < sequence.end(); iter++){
+        if (*iter == numberDel){
+            sequence.erase(iter);
+        }else if (*iter == sequence.back()){
+            cout << "No such number found !\n";
+        }
+    }
+    for (int i : sequence){
+        cout << i << " ";
+    }
     return 0;
 }
