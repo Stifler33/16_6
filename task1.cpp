@@ -23,18 +23,16 @@ int main() {
     cout << "Enter number delete :";
     int numberDel;
     cin >> numberDel;
-    bool del = false;
-    for (auto iter = sequence.begin(); iter < sequence.end(); iter++){
-        if (*iter == numberDel){
-            sequence.erase(iter);
-            del = true;
-            iter--;
-        }else if (*iter == sequence.back() && !del){
-            cout << "No such number found !\n";
-        }
+    vector<int> newVec;
+    for (int n = 0 ; n < sequence.size(); n++){
+       if (sequence[n] != numberDel){
+           newVec.push_back(sequence[n]);
+       }
     }
+    sequence = newVec;
     for (int i : sequence){
         cout << i << " ";
     }
+    cout << endl;
     return 0;
 }
