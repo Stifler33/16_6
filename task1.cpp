@@ -13,7 +13,7 @@ int main() {
     int sumNumb;
     cout << "Enter sum number ";
     cin >> sumNumb;
-    if (sumNumb == 0) sumNumb = check(sumNumb);
+    if (sumNumb <= 0) sumNumb = check(sumNumb);
     for (int i = 0; i < sumNumb; i++){
        int number;
        cout << "Enter number sequence\n";
@@ -23,10 +23,13 @@ int main() {
     cout << "Enter number delete :";
     int numberDel;
     cin >> numberDel;
+    bool del = false;
     for (auto iter = sequence.begin(); iter < sequence.end(); iter++){
         if (*iter == numberDel){
             sequence.erase(iter);
-        }else if (*iter == sequence.back()){
+            del = true;
+            iter--;
+        }else if (*iter == sequence.back() && !del){
             cout << "No such number found !\n";
         }
     }
