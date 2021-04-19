@@ -23,13 +23,11 @@ int main() {
     cout << "Enter number delete :";
     int numberDel;
     cin >> numberDel;
-    vector<int> newVec;
-    for (int n = 0 ; n < sequence.size(); n++){
-       if (sequence[n] != numberDel){
-           newVec.push_back(sequence[n]);
-       }
+    int c = 0;
+    for (int n = 0; n < sequence.size(); n++){
+       if (sequence[n] != numberDel) sequence[c++] = sequence[n];
     }
-    sequence = newVec;
+    sequence.resize(c);
     for (int i : sequence){
         cout << i << " ";
     }
