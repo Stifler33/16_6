@@ -1,30 +1,28 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-const int sizeVec = 20;
 int main() {
-    vector<int> vec;
+    vector<int> vec(20);
     int number = 0;
+    int count = 0;
     cout << "Enter number\n";
     while (number != -2){
         cin >> number;
-        if (number == -2) continue;
-        if (number == -1){
-            cout << "vec.size " << vec.size() << endl;
-            for (int i : vec){
-                cout << i << " ";
+        //vector<int> buffer;
+        if (number == -2) {
+            continue;
+        }else if (number == -1){
+            for (int i = count; i < vec.size(); i++){
+                cout << vec[i] << " ";
+            }
+            for (int i = 0; i < count; i++){
+                cout << vec[i] << " ";
             }
             cout << endl;
             continue;
         }
-        if ((vec.size() + 1) > sizeVec){
-            vec.erase(vec.begin());
-            vec.push_back(number);
-        }else  vec.push_back(number);
-        //cout << "vec.size " << vec.size() << endl;
-    }
-    for (int i : vec){
-        cout << i << " ";
+        vec[count++] = number;
+        if (count == 20) count = 0;
     }
     return 0;
 }
